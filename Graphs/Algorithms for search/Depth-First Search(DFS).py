@@ -1,0 +1,34 @@
+"""
+realno na dfs vlizam v node i za vseki child v node izvikvam rekursivno
+taka vzimam successors purvo
+"""
+
+
+def dfs(node, graph, visited):
+    if node in visited:
+        return
+
+    visited.add(node)
+
+    for child in graph[node]:
+        dfs(child, graph, visited)
+
+    print(node, end=" ")
+
+
+graph = {
+    1: [19, 21, 14],
+    19: [7, 12, 31, 21],
+    7: [1],
+    12: [],
+    31: [21],
+    21: [14],
+    14: [23, 6],
+    6: [],
+    23: [21],
+}
+
+visited = set()
+
+for node in graph:
+    dfs(node, graph, visited)
